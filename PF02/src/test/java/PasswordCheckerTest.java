@@ -18,7 +18,7 @@ public class PasswordCheckerTest {
         checker.setMaxLength(12);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC01
     @ValueSource(strings = {"Abcde123"})
     void validPassword(String password) {
         int result = checker.check(password, password);
@@ -37,7 +37,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.PASSWORD_OK, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC02 && EC03
     @ValueSource(strings = {
             "Abcde12",
             "Abcdef1234560"
@@ -56,7 +56,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.PASSWORD_OK, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC04
     @ValueSource(strings = {
             "Abcdefghi"
     })
@@ -74,7 +74,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.PASSWORD_OK, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC05
     @ValueSource(strings = {
             "abcdef1234"
     })
@@ -92,7 +92,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.PASSWORD_OK, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC06
     @ValueSource(strings = {
             "ABCDE12345"
     })
@@ -101,7 +101,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_LOWERS, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC07 && EC08
     @ValueSource(strings = {
             "",
             " "
@@ -120,7 +120,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.PASSWORD_OK, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC09
     @ValueSource(strings = {
             "Abcdef123"
     })
@@ -129,7 +129,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.PASSWORD_OK, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //EC10
     @ValueSource(strings = {
             "Abcdef1234",
             "AbcdE123",
@@ -139,7 +139,7 @@ public class PasswordCheckerTest {
         assertEquals(PasswordChecker.ERR_NO_MATCH, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //ET01 && ET02
     @ValueSource(ints = {
             -1,
             0
@@ -150,7 +150,7 @@ public class PasswordCheckerTest {
         });
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //ET03
     @ValueSource(ints = {
             7,
     })
@@ -160,7 +160,7 @@ public class PasswordCheckerTest {
         });
     }
 
-    @ParameterizedTest
+    @ParameterizedTest //ET04
     @ValueSource(ints = {
             8,
             10
